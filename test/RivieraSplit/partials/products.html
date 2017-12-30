@@ -1,0 +1,29 @@
+﻿<ul class="booking-list">
+    <li ng-repeat="x in products | orderBy:orderValue | filter:filterValue | filter:filterCategory">
+        <div class="booking-item booking-item-small">
+            <div class="row">
+
+                <div class="col-xs-4">
+                    <img src="images/hotel_porto_bay_rio_internacional_de_luxe_800x600.jpg" alt="Image Alternative text"
+                        title="hotel PORTO BAY RIO INTERNACIONAL de luxe" />
+                </div>
+                <div class="col-xs-5">
+                <h4>{{x.City}}</h4>
+                    <h5 class="booking-item-title">
+                        {{x.Title}}</h5>
+                    <p>
+                        {{x.Description}}</p>
+                        <p>dist: {{x.Distance}} km <i class="fa fa-map-marker" aria-hidden="true"></i></p>
+                        <div>
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        </div>
+                </div>
+                <div class="col-xs-3">
+                    <tourtraveln class="booking-item-price-from">15.8.2016</tourtraveln>
+                    <tourtraveln class="booking-item-price">€{{x.Price}}</tourtraveln>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,53 @@
+﻿<html lang="en">
+<head>
+    <title>Aplikacija</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+    
+</head>
+<body ng-app="app" ng-controller="AppCtrl" ng-cloak>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Teretana LION</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li ng-class="activeTab == 0 ? 'active' : ''" data-toggle="collapse" data-target="#myNavbar"><a href="#" ng-click="toggleTpl('assets/partials/dashboard.html', 0)">Dashboard</a></li>
+                    <li ng-class="activeTab == 1 ? 'active' : ''" data-toggle="collapse" data-target="#myNavbar"><a href="#" ng-click="toggleTpl('assets/partials/checkin.html', 1)">Prijava</a></li>
+                    <li ng-class="activeTab == 2 ? 'active' : ''" data-toggle="collapse" data-target="#myNavbar"><a href="#" ng-click="toggleTpl('assets/partials/clients.html', 2)">Članovi</a></li>
+                    <li ng-class="activeTab == 3 ? 'active' : ''" data-toggle="collapse" data-target="#myNavbar"><a href="#" ng-click="toggleTpl('assets/partials/calendar.html', 3)">Kalendar</a></li>
+                    <li ng-class="activeTab == 4 ? 'active' : ''" data-toggle="collapse" data-target="#myNavbar"><a href="#" ng-click="toggleTpl('assets/partials/analitics.html', 4)">Analitika</a></li>
+                    <li ng-class="activeTab == 5 ? 'active' : ''" data-toggle="collapse" data-target="#myNavbar"><a href="#" ng-click="toggleTpl('assets/partials/messages.html', 5)">Poruke</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+        <div ng-include="currTpl"></div>
+
+    <script src="assets/js/app.js"></script>
+  
+</body>
+</html>

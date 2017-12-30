@@ -1,0 +1,28 @@
+﻿<div class="container" style="border: 1px solid Menu; padding: 5px; border-radius: 2px">
+<div class="row" style="margin-bottom: 10px">
+    <div class="col-md-2">
+        <label>Filter By Town</label>
+    </div>
+    <div class="col-md-2">
+        <select class="form-control" ng-model="filterOption" ng-change="filter(filterOption)">
+            <option value="">All Towns</option>
+            <option>Brela</option>
+            <option>Rijeka</option>
+            <option>Split</option>
+        </select>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-2">
+        <label>Order By...</label>
+    </div>
+    <div class="col-md-2">
+        <select class="form-control" ng-model="orderOption" ng-change="sort(orderOption)">
+            <option>Distance</option>
+            <option>Price</option>
+            <option>City</option>
+            <option>Title</option>
+        </select>
+    </div>
+</div>
+</div>

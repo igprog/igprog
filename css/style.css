@@ -1,0 +1,102 @@
+﻿/*Price Styles */
+* {
+    box-sizing: border-box;
+}
+
+.columns {
+    float: left;
+    width: 33.3%;
+    padding: 8px;
+}
+
+.price {
+    list-style-type: none;
+    border: 1px solid #eee;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.price:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+.price .header {
+    background-color: #111;
+    color: white;
+    font-size: 25px;
+}
+
+.price li {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+}
+
+.price .grey {
+    background-color: #eee;
+    font-size: 20px;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.notActive
+{
+    color: Gray;
+    text-decoration: line-through;
+}
+
+@media only screen and (max-width: 600px) {
+    .columns {
+        width: 100%;
+    }
+}
+
+/*End Price Styles */
+
+
+
+/*My Stiles*/
+
+.border
+{
+   border: 1px solid Menu;
+   border-radius: 5px; 
+   padding: 10px;
+   min-height: 200px;
+}
+
+.border:hover
+{
+     box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+.border-blue
+{
+    border: 1px solid #1a8cff !important;
+}
+
+
+
+.img-contact
+{
+width: 30%;
+margin: 0 auto !important;
+text-align: center !important;
+}
+
+@media only screen and (max-width: 600px) {
+ .img-contact {width: 50% !important;}
+
+}
+
+/*My Stiles*/

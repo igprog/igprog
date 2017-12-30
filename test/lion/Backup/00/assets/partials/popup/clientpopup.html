@@ -1,0 +1,97 @@
+﻿<md-dialog>
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{client.firstName}} {{client.lastName}}</h2>
+                <span flex></span>
+                <button ng-click="cancel()" class="btn btn-primary">x</button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <button class="btn btn-success" ng-click="answer('useful')">Obnovi članarinu</button>
+                <md-input-container class="md-block" flex-gt-sm>
+                  Podaci o korisniku
+                  <hr />
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Id</label>
+                    <input ng-model="client.id" type="text">
+                </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Ime</label>
+                        <input ng-model="client.firstName" type="text">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Prezime</label>
+                        <input ng-model="client.lastName">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Datum rođenja</label>
+                        <md-datepicker ng-model="client.birthDate"></md-datepicker>
+                    </md-input-container>
+             
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Telefon</label>
+                        <md-icon class="material-icons step"></md-icon>
+                        <input ng-model="client.phone">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Email</label>
+                        <input name="email" ng-model="client.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                    </md-input-container>
+
+
+
+                    <p>Broj dolazaka</p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><label>Br.</label></th>
+                                <th>Vrijeme dolaska</th>
+                                <th>Broj dolazaka</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>16:00</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>17:00</td>
+                                <td>16</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>18:30</td>
+                                <td>22</td>
+                            </tr>
+                            <tr class="info">
+                                <td></td>
+                                <td></td>
+                                <td>43</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <!--<md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+                More on Wikipedia
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="answer('not useful')">
+                Not Useful
+            </md-button>-->
+            <md-button ng-click="answer('useful')">
+                Zatvori
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

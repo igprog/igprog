@@ -1,0 +1,72 @@
+﻿<div class="container">
+    <div class="row">
+            <div class="col-sm-4 panel-primary">
+                <div class="panel-heading">
+                    Pregled članova
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Ukupno</td>
+                                <td><span class="badge">25</span></td>
+                            </tr>
+                            <tr>
+                                <td>Aktivni</td>
+                                <td><span class="badge">20</span></td>
+                            </tr>
+                            <tr>
+                                <td>Neaktivni</td>
+                                <td><span class="badge">5</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-4 panel-primary">
+                <div class="panel-heading">Istek članarine</div>
+                    <div class="panel-body" style="height: 150px; overflow-y: scroll;">
+                        <table class="table">
+                            <tbody>
+                                <tr ng-class="getDateDiff(x.dateTo) < 5 ? 'text-danger' : ''" ng-repeat="x in clients" ng-click="showClient(x)">
+                                    <td>{{x.id}}</td>
+                                    <td>{{x.firstName}} {{x.lastName}}</td>
+                                    <td>{{x.dateTo}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+            <div class="col-sm-4 panel-primary">
+                <div class="panel-heading">Broj dolazaka</div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Danas</td>
+                                <td><span class="badge">5</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tekući tjedan</td>
+                                <td><span class="badge">20</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tekući mjesec</td>
+                                <td><span class="badge">150</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 panel-primary">
+            <div class="panel-heading">
+                Pregled dolazaka
+            </div>
+            <div class="panel-body">
+                <img src="http://chart.apis.google.com/chart?cht=bvg&chs=1000x250&chco=81ce1c&chxt=x,y&chxr=0,1,31|1,1,31&chdl=broj+dolazaka&chbh=a&chtt=&chts=000000,24&chd=t:5,10,50,30,25,20,32,24,5,10,5,10,50,30,25,20,32,24,5,10,5,10,50,30,25,20,32,24,5,10,12" />
+            </div>
+        </div>
+    </div>
+</div>

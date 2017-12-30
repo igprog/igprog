@@ -1,0 +1,67 @@
+﻿<div class="container" ng-cloak>
+
+    <div ng-controller="BarCtrl">
+        //Test
+        <canvas id="bar" class="chart chart-bar"
+                chart-data="data" chart-labels="labels">
+            chart-series="series"
+        </canvas>
+    </div> 
+
+    <div>
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <hr />
+    </div>
+
+    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+        
+
+        <div layout-gt-sm="row">
+            <!--<iframe src='//charts.hohli.com/embed.html?created=1482528802563#w=640&h=480&d={"containerId":"chart","dataTable":{"cols":[{"label":"A","type":"string"},{"label":"B","type":"number"}],"rows":[{"c":[{"v":"Science Fiction"},{"v":217}]},{"c":[{"v":"General Science"},{"v":203}]},{"c":[{"v":"Computer Science"},{"v":175}]},{"c":[{"v":"History"},{"v":155}]},{"c":[{"v":"General Fiction"},{"v":72}]},{"c":[{"v":"Fantasy"},{"v":51}]},{"c":[{"v":"Law"},{"v":29}]}]},"options":{"width":640,"height":480},"state":{},"isDefaultVisualization":true,"chartType":"PieChart"}' frameborder='0' width='650' height='490'></iframe>-->
+            <img src="http://chart.apis.google.com/chart?cht=p3&chs=500x250&chdl=first+legend%7Csecond+legend%7Cthird+legend&chl=first+label%7Csecond+label%7Cthird+label&chco=FF0000|00FFFF|00FF00,6699CC|CC33FF|CCCC33&chtt=My+Google+Chart&chts=000000,24&chd=t:5,10,50|25,35,45" />
+            <img src="http://chart.apis.google.com/chart?cht=bvs&chs=500x250&chco=6699CC,CC33FF,CCCC33&chxt=x,y&chxr=0,-20,100|1,0,50&chdl=first+legend%7Csecond+legend%7Cthird+legend&chbh=a&chtt=My+Google+Chart&chts=000000,24&chd=t:5,10,50|25,35,45" />
+        </div>
+    </md-content>
+</div>
+
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+

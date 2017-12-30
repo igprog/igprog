@@ -1,0 +1,47 @@
+﻿
+
+
+
+
+html
+{
+   
+}
+
+body 
+{
+    font-family: Candara;
+    font-size: 14px;
+    padding: 0;
+    margin:0;
+}
+
+header
+{
+    background-color: Olive;
+}
+
+h1
+{
+    margin: 0;
+    padding: 10px;
+    color: White;
+}
+
+section
+{
+    padding: 10px;
+    width: 400px;
+}
+
+.txtControl
+{
+    width: 350px;
+}
+
+
+ @media (max-width:701px){section{width: 90% !important}}
+ @media (max-width:701px){.txtControl{width: 95% !important}}
+
+
+

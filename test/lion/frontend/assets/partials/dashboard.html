@@ -1,0 +1,290 @@
+﻿<div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">Dashboard</h3>
+        </div>
+    </div>
+
+    <div class="row">
+      
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-primary" ng-click="toggleTpl('assets/partials/checkin.html', 1)">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-user fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{currentNumberOfClients()}}</div>
+                            <div>Trenutno članova</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="text-primary">
+                    <div class="panel-footer">
+                        <span class="pull-left">PRIJAVI DOLAZAK</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6" ng-click="toggleTpl('assets/partials/calendar.html', 6)">
+            <div class="panel panel-green">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-calendar fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{today | date:'dd.MM.'}}</div>
+                            <div>Kalendar</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">
+                    <div class="panel-footer">
+                        <span class="pull-left">POGLEDAJ RASPORED</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-yellow">
+                <div class="panel-heading" ng-click="toggleTpl('assets/partials/checkin.html', 1)">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-users fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{(clients | filter: clientsFilter('Stalni član')).length }}</div>
+                            <div>Ukupno članova</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" ng-click="toggleTpl('assets/partials/newclient.html', 2); newClient()">
+                    <div class="panel-footer">
+                        <span class="pull-left">NOVI ČLAN</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-red"  ng-click="toggleTpl('assets/partials/clients.html', 3)">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-exclamation fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{expirationMembership()}}</div>
+                            <div>Istek članarine</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">
+                    <div class="panel-footer">
+                        <span class="pull-left">POGLEDAJ DETELJE</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+   
+    </div>
+
+
+
+    <!--<div class="row">
+        <div class="col-sm-4">
+            <div class="bg-info dashboardBox">
+                <table>
+                    <tr>
+                        <td>
+                            <select ng-model="currentClient" class="form-control">
+                                <option value="" disabled="disabled">Izaberi člana</option>
+                                <option ng-repeat="x in clients" value="{{x.id}}">{{x.firstName}} {{x.lastName}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn btn-success btn-sm" style="margin-left:5px" ng-click="checkIn(currentClient)">PRIJAVI DOLAZAK</button>
+                        </td>
+                    </tr>
+                </table>
+                
+               
+                
+                <div style="height: 160px; overflow-y: scroll;">
+                    <table class="table">
+                        <tbody>
+                            <tr data-toggle="modal" data-target="#currentClientModal">
+                                <td><i class="fa fa-user" aria-hidden="true"></i> Trenutni članovi</td>
+                                <td><span class="badge">{{currentNumberOfClients()}}</span></td>
+                            </tr>
+                            <tr ng-repeat="x in currentClients" ng-click="showClient(x)">
+                                <td>{{x.firstName}} {{x.lastName}}</td>
+                                <td>{{x.checkInTime}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="bg-info dashboardBox">
+                <div style="height: 180px; overflow-y: scroll;">
+                    <table class="table">
+                        <tr>
+                            <td style="width: 50px"></td>
+                            <td></td>
+                            <td>Istek članarine</td>
+                        </tr>
+                            <tr style="width: 50px" ng-class="getDateDiff(x.dateTo) < 5 ? 'text-danger' : ''" ng-repeat="x in clients | filter: clientName" ng-click="showClient(x)">
+                                <td><i ng-class="getDateDiff(x.dateTo) < 5 ? 'fa fa-exclamation' : 'fa fa-check'" aria-hidden="true"></i></td>
+                                <td>{{x.firstName}} {{x.lastName}}</td>
+                                <td>{{x.dateTo}}</td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+      
+        <div class="col-sm-4">
+            <div class="bg-info dashboardBox">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td><button class="btn btn-warning btn-sm" ng-click="toggleTpl('assets/partials/newclient.html', 2); newClient()">NOVI ČLAN</button></td>
+                            <td></td>
+                        </tr>
+                        <tr data-toggle="modal" data-target="#clientsModal">
+                            <td><i class="fa fa-users" aria-hidden="true"></i></td>
+                            <td>Stalni članovi</td>
+                            <td><span class="badge">{{(clients | filter: clientsFilter('Stalni član')).length }}</span></td>
+                        </tr>
+                        <tr data-toggle="modal" data-target="#clientsModal">
+                            <td><i class="fa fa-user-plus" aria-hidden="true"></i></td>
+                            <td>Novi članovi</td>
+                            <td><span class="badge">{{NumberOfNewMembers()}}</span></td>
+                        </tr>
+                        <tr data-toggle="modal" data-target="#clientsModal">
+                            <td><i class="fa fa-user-o" aria-hidden="true"></i></td>
+                            <td>Gosti</td>
+                            <td><span class="badge">{{(clients | filter: clientsFilter('Gost')).length }}</span></td>
+                        </tr>
+                        <tr data-toggle="modal" data-target="#clientsModal">
+                            <td><i class="fa fa-exclamation" aria-hidden="true"></i></td>
+                            <td>Istek članarine</td>
+                            <td><span class="badge">{{expirationMembership()}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>-->
+
+
+
+    <div class="row">
+        <div class="col-sm-12 panel-info">
+            <div class="panel-heading">
+                Pregled dolazaka
+            </div>
+            <div class="panel-body">
+                <div ng-controller="BarCtrl">
+                    <canvas id="line" class="chart chart-line" chart-data="data" chart-colors="colors" height="250"
+                            chart-labels="labels" chart-series="series" chart-options="options"
+                            chart-dataset-override="datasetOverride" chart-click="onClick">
+                    </canvas>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="currentClientModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Trenutni članovi</h4>
+            </div>
+            <div class="modal-body">
+                <div style="height: 240px; overflow-y: scroll;">
+                    <p>Trenutno članova <span class="badge">{{currentNumberOfClients}}</span></p>
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <td>Id</td>
+                                <td>Ime i prezime</td>
+                                <td>Datum</td>
+                                <td>Vrijeme</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in currentClients" ng-click="showClient(x)">
+                                <td>{{x.id}}</td>
+                                <td>{{x.firstName}} {{x.lastName}}</td>
+                                <td>{{x.checkInDate}}</td>
+                                <td>{{x.checkInTime}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Clients (expiration) -->
+<div class="modal fade" id="clientsModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Članovi</h4>
+            </div>
+            <div class="modal-body">
+                <div style="height: 240px; overflow-y: scroll;">
+                    <p>Istekle članarine <span class="badge">{{expirationMembership()}}</span></p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><label>ID</label></th>
+                                <th>Ime i prezime</th>
+                                <td>Istek Članarine</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-class="getDateDiff(x.dateTo) < 5 ? 'text-danger' : ''" ng-repeat="x in clients">
+                                <td>{{x.id}}</td>
+                                <td>{{x.firstName}} {{x.lastName}}</td>
+                                <td>{{x.dateTo}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

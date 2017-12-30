@@ -1,0 +1,21 @@
+﻿.dashboardBox {
+margin:10px 0px 10px 0px;
+padding: 10px;
+border-radius: 5px;
+height: 220px;
+border-color: red;
+}
+
+.huge {
+    font-size: 36px;
+}
+
+.vertical-nav {
+    background-color:#5cb85c;
+}
+
+a {
+    color: white;
+}
+
+

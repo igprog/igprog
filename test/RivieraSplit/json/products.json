@@ -1,0 +1,112 @@
+﻿{
+  "products": [
+    {
+      "Title": "Event 1",
+      "Description": "Description...",
+      "City": "Split",
+	  "Price": 120,
+	  "Category": "Events",
+	  "Latitude": 43.5270121,
+	  "Longitude": 16.5009688
+    },
+    {
+      "Title": "Event 2",
+      "Description": "Description...",
+      "City": "Split",
+	  "Price": 110,
+	  "Category": "Events",
+	  "Latitude": 43.5132657,
+	  "Longitude": 16.4545725
+    },
+    {
+      "Title": "Event 3",
+      "Description": "Rijeka centar...",
+      "City": "Rijeka",
+	  "Price": 90,
+	  "Category": "Events",
+	  "Latitude": 45.3278728,
+	  "Longitude": 14.4274118
+    },
+    {
+      "Title": "Event 4",
+      "Description": "Description...",
+      "City": "Brela",
+	  "Price": 120,
+	  "Category": "Events",
+	  "Latitude": 43.3471599,
+	  "Longitude": 16.9267752
+    },
+	{
+      "Title": "Accommodation 1",
+      "Description": "Description...",
+      "City": "Split",
+	  "Price": 120,
+	  "Category": "Accommodation",
+	  "Latitude": 45.5132657,
+	  "Longitude": 16.4545725
+    },
+	{
+      "Title": "Accommodation 2",
+      "Description": "Jardula 26...",
+      "City": "Brela",
+	  "Price": 130,
+	  "Category": "Accommodation",
+	  "Latitude": 43.38371001,
+	  "Longitude": 16.9053684
+    },
+	{
+      "Title": "Accommodation 3",
+      "Description": "Zamer centar...",
+      "City": "Rijeka",
+	  "Price": 140,
+	  "Category": "Accommodation",
+	  "Latitude": 45.34373111,
+	  "Longitude": 14.3844984
+    },
+	{
+      "Title": "Accommodation 4",
+      "Description": "Ludvetov breg 5...",
+      "City": "Rijeka",
+	  "Price": 110,
+	  "Category": "Accommodation",
+	  "Latitude": 45.3460845,
+	  "Longitude": 14.3860995
+    },
+	{
+      "Title": "Restaurant 1",
+      "Description": "Description...",
+      "City": "Brela",
+	  "Price": 80,
+	  "Category": "Restaurants",
+	  "Latitude": 45.3471599,
+	  "Longitude": 14.3855911
+    },
+	{
+      "Title": "Restaurant 2",
+      "Description": "Description...",
+      "City": "Split",
+	  "Price": 65,
+	  "Category": "Restaurants",
+	  "Latitude": 45.3471599,
+	  "Longitude": 14.3855911
+    },
+	{
+      "Title": "Restaurant 3",
+      "Description": "Description...",
+      "City": "Split",
+	  "Price": 125,
+	  "Category": "Restaurants",
+	  "Latitude": 45.3471599,
+	  "Longitude": 14.3855911
+    },
+	{
+      "Title": "Restaurant 4",
+      "Description": "Description...",
+      "City": "Rijeka",
+	  "Price": 35,
+	  "Category": "Restaurants",
+	  "Latitude": 45.3471599,
+	  "Longitude": 14.3855911
+    }
+  ]
+}

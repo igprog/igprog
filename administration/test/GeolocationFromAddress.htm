@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+</head>
+<body>
+<input type="text" id= "city">
+<input type="text" id="address" placeholder="address" />
+<input id="btn" type="button" value="get Lat&Long" onclick="getLocation1()" />
+<script type="text/javascript">
+    //    function myIP() {
+//    $("#btn").click(function () {
+//        var adr = $("#city").val();
+//        var geocoder = new google.maps.Geocoder();
+//        alert(adr);
+//        geocoder.geocode({ 'address': adr }, function (results, status) {
+//        
+//            if (status == google.maps.GeocoderStatus.OK) {
+//                alert("location : " + results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
+//            } else {
+//                alert("Something got wrong " + status);
+//            }
+//        });
+//    });
+    //    }
+
+
+    function getLocation() {
+    // Creating an array that will contain the coordinates 
+// for New York, San Francisco, and Seattle
+var places = [];
+
+// Adding a LatLng object for each city
+//places.push(new google.maps.LatLng(40.756, -73.986));
+//places.push(new google.maps.LatLng(37.775, -122.419));
+//places.push(new google.maps.LatLng(47.620, -122.347));
+//places.push(new google.maps.LatLng(-22.933, -43.184));
+var result;
+var adr = $("#address").val();
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA",true);
+//xmlhttp.open("GET", "http://maps.googleapis.com/maps/api/geocode/json?address=your+code&sensor=false",true);
+//xmlhttp.open("GET", "http://maps.googleapis.com/maps/api/geocode/json?address=" + adr + "&sensor=false",true);
+ xmlhttp.onreadystatechange=function() {
+  if (xmlhttp.readyState==4) {
+  alert(xmlhttp.responseText);
+       result = eval('(' + xmlhttp.responseText + ')');
+if (result.status == "OK") {
+
+var location = new google.maps.LatLng(result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
+
+places.push(location);
+     }
+ </script>
+
+
+ <script>
+     function loadDoc() {
+         var xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function () {
+             if (xhttp.readyState == 4 && xhttp.status == 200) {
+                 alert(xhttp.responseText);
+                 var myArr = JSON.parse(xmlhttp.responseText);
+              //   document.getElementById("demo").innerHTML = xhttp.responseText;
+             }
+         };
+         xhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA", true);
+         xhttp.send();
+     }
+
+
+     function getLocation1() {
+
+     var address = $("#address").val();
+     alert(address);
+         $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&sensor=false', null, function (data) {
+             var p = data.results[0].geometry.location
+             var latlng = new google.maps.LatLng(p.lat, p.lng);
+             alert(latlng);
+         });
+
+
+     }
+</script>
+
+
+
+</body>
+</html>

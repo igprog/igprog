@@ -1,0 +1,43 @@
+﻿<div class="container" ng-cloak>
+    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+        <div layout-gt-sm="row">
+            <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="item in getMatches(searchText)" md-item-text="item.display" placeholder="Upišite Ime ili ID">
+                <span md-highlight-text="searchText">{{item.display}}</span>
+            </md-autocomplete>
+            <md-button class="md-raised md-primary">Prijavi</md-button>
+        </div>
+        
+
+</md-content>
+    <div layout-gt-sm="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><label>ID</label></th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in clients" ng-click="showClient(x)">
+                    <td>{{x.id}}</td>
+                    <td>{{x.firstName}}</td>
+                    <td>{{x.lastName}}</td>
+                </tr>
+                <tr class="info">
+                    <td></td>
+                    <td></td>
+                    <td>43</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <md-tab label="Svi članovi">
+        <md-content class="md-padding">
+            <div class="container">
+            
+            </div>
+        </md-content>
+    </md-tab>
+
+</div>

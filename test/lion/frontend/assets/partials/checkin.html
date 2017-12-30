@@ -1,0 +1,88 @@
+﻿<div ng-cloak>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">Evidencija dolazaka</h3>
+        </div>
+    </div>
+    <!--<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+        <div layout-gt-sm="row">
+            <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="item in getMatches(searchText)" md-item-text="item.display" placeholder="Upišite Ime ili ID">
+                <span md-highlight-text="searchText">{{item.display}}</span>
+            </md-autocomplete>
+            <md-button class="md-raised md-primary">Prijavi</md-button>
+        </div>
+    </md-content>-->
+    <br />
+    <h4><span class="fa fa-user" aria-hidden="true"></span> Trenutni članovi <span class="badge">{{currentNumberOfClients()}}</span></h4>
+    <br />
+
+    <table>
+        <tr>
+            <td>
+                <select ng-model="currentClient" class="form-control">
+                    <option value="" disabled="disabled">Izaberi člana</option>
+                    <option ng-repeat="x in clients" value="{{x.id}}">{{x.firstName}} {{x.lastName}}</option>
+                </select>
+            </td>
+            <td>
+                <button class="btn btn-success btn-sm" style="margin-left:5px" ng-click="checkIn(currentClient)">PRIJAVI DOLAZAK</button>
+            </td>
+        </tr>
+        <!--<tr>
+            <td><i class="fa fa-user" aria-hidden="true"></i> Trenutni članovi</td>
+            <td><span class="badge">{{currentNumberOfClients}}</span></td>
+        </tr>-->
+    </table>
+
+    
+
+
+    <!--<select ng-model="currentClient" class="form-control">
+        <option value="" disabled="disabled">Izaberi člana</option>
+        <option ng-repeat="x in clients" value="{{x.id}}">{{x.firstName}} {{x.lastName}}</option>
+    </select>
+
+    <button class="btn btn-success btn-sm" style="margin-left:5px" ng-click="checkIn(currentClient)">PRIJAVI DOLAZAK</button>-->
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Usluga</th>
+                    <th>Datum</th>
+                    <th>Vrijeme</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in currentClients">
+                    <td ng-click="showClient(x)">{{x.id}}</td>
+                    <td ng-click="showClient(x)">{{x.firstName}}</td>
+                    <td ng-click="showClient(x)">{{x.lastName}}</td>
+                    <td ng-click="showClient(x)">{{x.service}}</td>
+                    <td ng-click="showClient(x)">{{x.checkInDate}}</td>
+                    <td ng-click="showClient(x)">{{x.checkInTime}}</td>
+                    <td ng-click="removeCurrentClient($index)"><i class="fa fa-times" aria-hidden="true" style="color:red"></i></td>
+                    <!--<td ng-click="showClient(x)"><i class="fa fa-info" aria-hidden="true" style="color:cornflowerblue"></i></td>-->
+                </tr>
+                <!--<tr class="info">
+                    <td></td>
+                    <td></td>
+                    <td>43</td>
+                </tr>-->
+            </tbody>
+        </table>
+    </div>
+    <!--<md-tab label="Svi članovi">
+        <md-content class="md-padding">
+            <div class="container">
+            
+            </div>
+        </md-content>
+    </md-tab>-->
+
+</div>

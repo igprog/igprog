@@ -1,0 +1,198 @@
+﻿<div ng-if="showSaveMessage" style="margin-top:100px">
+    <div class="alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong>Spremljeno!</strong>
+    </div>
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised md-accent" ng-click="newClient()">Novi član</md-button>
+    </md-dialog-actions>
+</div>
+
+<div ng-if="!showSaveMessage">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">Član</h3>
+        </div>
+    </div>
+    <!--<md-content class="md-padding">-->
+        <!--<form name="projectForm">-->
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="container row">
+                                <b>Osobni podaci<span class="radioValue"></span> </b>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Id</label>
+                                    <input ng-model="client.id" type="text" disabled>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Ime</label>
+                                    <input ng-model="client.firstName" type="text">
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Prezime</label>
+                                    <input ng-model="client.lastName">
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Datum rođenja</label>
+                                    <md-datepicker ng-model="client.birthDate"></md-datepicker>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Telefon</label>
+                                    <input ng-model="client.phone">
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Email</label>
+                                    <input name="email" ng-model="client.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                                </md-input-container>
+                            </div>
+                            <!--<md-radio-group ng-model="client.service">
+                        <md-radio-button ng-repeat="x in services" ng-value="x.text" aria-label="{{ x.text }}">
+                            {{ x.text }}
+                        </md-radio-button>
+                    </md-radio-group>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="container row">
+                                <b>Članarina</b>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                                <b>Usluga</b>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <md-radio-group ng-model="client.service">
+                                                <md-radio-button ng-repeat="x in services" ng-value="x.text" aria-label="{{ x.text }}">
+                                                    {{ x.text }}
+                                                </md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                                <b>Tip člana</b>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <md-radio-group ng-model="client.clientType">
+                                                <md-radio-button ng-repeat="x in clientTypes" ng-value="x.text" aria-label="{{ x.text }}">
+                                                    {{ x.text }}
+                                                </md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                                <b>Tip članarine</b>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <md-radio-group ng-model="client.feeType">
+                                                <md-radio-button ng-repeat="x in feeTypes" ng-value="x.text" aria-label="{{ x.text }}" ng-click="membershipType(x)">
+                                                    {{ x.text }}
+                                                </md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                                <b>Iznos članarine</b>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <input type="text" class="form-control" ng-model="client.fee" />
+                                            <!--<md-input-container>
+                                                <label>Iznos članarine</label>
+                                                <md-select ng-model="client.fee">
+                                                    <md-option ng-value="x.fee" ng-repeat="x in feeTypes">
+                                                        {{x.fee}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                                <b>Trajanje članarine</b>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <md-input-container class="md-block" flex-gt-sm>
+                                                <label>Od</label>
+                                                <md-datepicker ng-model="client.dateFrom" format="YYYY-MM-DD"></md-datepicker>
+                                            </md-input-container>
+                                            <md-input-container class="md-block" flex-gt-sm>
+                                                <label>Do</label>
+                                                <md-datepicker ng-model="client.dateTo"></md-datepicker>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+                <!--<div layout-gt-sm="row">
+            <md-input-container>
+                <label>Iznos članarine</label>
+                <md-select ng-model="client.fee">
+                    <md-option ng-value="x.value" ng-repeat="x in fees">
+                        {{x.text}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>-->
+                <!--<div layout-gt-sm="row">
+            <p>Trajanje članarine:</p>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Od</label>
+                <md-datepicker ng-model="client.dateFrom"></md-datepicker>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Do</label>
+                <md-datepicker ng-model="client.dateTo"></md-datepicker>
+            </md-input-container>
+        </div>-->
+                <!--<hr />-->
+                <md-dialog-actions layout="row">
+                    <md-button class="md-raised md-primary" ng-click="save(client)">Spremi</md-button>
+                </md-dialog-actions>
+        <!--</form>-->
+    <!--</md-content>-->
+</div>
+

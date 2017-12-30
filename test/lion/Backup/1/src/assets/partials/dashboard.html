@@ -1,0 +1,221 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="bg-info dashboardBox">
+                <table>
+                    <tr>
+                        <td>
+                            <select ng-model="currentClient" class="form-control">
+                                <option value="" disabled="disabled">Izaberi člana</option>
+                                <option ng-repeat="x in clients" value="{{x.id}}">{{x.firstName}} {{x.lastName}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn btn-success btn-sm" style="margin-left:5px" ng-click="checkIn(currentClient)">PRIJAVI DOLAZAK</button>
+                        </td>
+                    </tr>
+                </table>
+                
+                <!--<select ng-model="id" ng-options="x.id for x in clients"></select>-->
+                <!--<select class="form-control" ng-model="currentClient">
+        <option>Odaberi člana</option>
+        <option ng-repeat="x in clients">{{x.firstName}}  {{x.lastName}}</option>
+    </select>-->
+               
+                
+                <div style="height: 180px; overflow-y: scroll;">
+                    <table class="table">
+                        <tbody>
+                            <tr data-toggle="modal" data-target="#currentClientModal">
+                                <td><i class="fa fa-user" aria-hidden="true"></i> Trenutni članovi</td>
+                                <td><a href></a><span class="badge">{{currentNumberOfClients}}</span></td>
+                            </tr>
+                            <tr ng-repeat="x in currentClients" ng-click="showClient(x)">
+                                <td>{{x.firstName}} {{x.lastName}}</td>
+                                <td>{{x.checkInTime}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+          <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+                    <!--<div ng-controller="AppCtrl as ctrl" layout="column" ng-cloak>
+            <md-content class="md-padding">
+                <form ng-submit="$event.preventDefault()">
+                    <md-autocomplete ng-disabled="ctrl.isDisabled"
+                                     md-no-cache="ctrl.noCache"
+                                     md-selected-item="ctrl.selectedItem"
+                                     md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                                     md-search-text="ctrl.searchText"
+                                     md-selected-item-change="ctrl.selectedItemChange(item)"
+                                     md-items="item in ctrl.querySearch(ctrl.searchText)"
+                                     md-item-text="item.display"
+                                     md-min-length="0"
+                                     placeholder="Pretraži">
+                        <md-item-template>
+                            <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            Nije pronađen "{{ctrl.searchText}}".
+                        </md-not-found>
+                    </md-autocomplete>
+                    <button class="btn btn-success btn-sm" ng-click="checkIn(ctrl.selectedItem.value)">PRIJAVI DOLAZAK</button>
+                </form>
+            </md-content>
+        </div>-->
+
+
+                </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="bg-info dashboardBox">
+                <!--<p><span class="fa fa-exclamation"></span> ISTEK ČLANARINE <span class="badge">2</span></p>-->
+                    <input ng-model="clientName" type="text" class="form-control" placeholder="Pretraži članove"/>
+                <div style="height: 180px; overflow-y: scroll;">
+                    <table class="table">
+                        <tr>
+                            <td style="width: 50px"></td>
+                            <td></td>
+                            <td>Istek članarine</td>
+                        </tr>
+                            <tr style="width: 50px" ng-class="getDateDiff(x.dateTo) < 5 ? 'text-danger' : ''" ng-repeat="x in clients | filter: clientName" ng-click="showClient(x)">
+                                <td><i ng-class="getDateDiff(x.dateTo) < 5 ? 'fa fa-exclamation' : 'fa fa-check'" aria-hidden="true"></i></td>
+                                <td>{{x.firstName}} {{x.lastName}}</td>
+                                <td>{{x.dateTo}}</td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+      
+        <div class="col-sm-4">
+            <div class="bg-info dashboardBox">
+     
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td><button class="btn btn-warning btn-sm" ng-click="newClient()">NOVI ČLAN</button></td>
+                            <td></td>
+                        </tr>
+                        <tr data-toggle="modal" data-target="#clientsModal">
+                            <td><i class="fa fa-users" aria-hidden="true"></i></td>
+                            <td>Stalni članovi</td>
+                            <td><span class="badge">{{allClients()}}</span></td>
+                        </tr>
+                        <tr data-toggle="modal" data-target="#clientsModal">
+                            <td><i class="fa fa-user-plus" aria-hidden="true"></i></td>
+                            <td>Novi članovi</td>
+                            <td><span class="badge">7</span></td>
+                        </tr>
+                        <tr data-toggle="modal" data-target="#clientsModal">
+                            <td><i class="fa fa-user-o" aria-hidden="true"></i></td>
+                            <td>Gosti</td>
+                            <td><span class="badge">5</span></td>
+                        </tr>
+                        <tr data-toggle="modal" data-target="#clientsModal">
+                            <td><i class="fa fa-exclamation" aria-hidden="true"></i></td>
+                            <td>Istek članarine</td>
+                            <td><span class="badge">5</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 panel-primary">
+            <div class="panel-heading">
+                Pregled dolazaka
+            </div>
+            <div class="panel-body">
+                <div ng-controller="BarCtrl">
+                    <canvas id="line" class="chart chart-line" chart-data="data" chart-colors="colors" height="250"
+                            chart-labels="labels" chart-series="series" chart-options="options"
+                            chart-dataset-override="datasetOverride" chart-click="onClick">
+                    </canvas>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="currentClientModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Trenutni članovi</h4>
+            </div>
+            <div class="modal-body">
+                <div style="height: 240px; overflow-y: scroll;">
+                    <p>Trenutno članova <span class="badge">{{currentNumberOfClients}}</span></p>
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <td>Id</td>
+                                <td>Ime i prezime</td>
+                                <td>Datum</td>
+                                <td>Vrijeme</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in currentClients" ng-click="showClient(x)">
+                                <td>{{x.id}}</td>
+                                <td>{{x.firstName}} {{x.lastName}}</td>
+                                <td>{{x.checkInDate}}</td>
+                                <td>{{x.checkInTime}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Clients -->
+<div class="modal fade" id="clientsModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Članovi</h4>
+            </div>
+            <div class="modal-body">
+                <div style="height: 240px; overflow-y: scroll;">
+                    <p>članova <span class="badge">{{allClients()}}</span></p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><label>ID</label></th>
+                                <th>Ime i prezime</th>
+                                <td>Istek Članarine</td>
+                                <th>Aktivan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-class="getDateDiff(x.dateTo) < 5 ? 'text-danger' : ''" ng-repeat="x in clients" ng-click="showClient(x)">
+                                <td>{{x.id}}</td>
+                                <td>{{x.firstName}} {{x.lastName}}</td>
+                                <td>{{x.dateTo}}</td>
+                                <td><input type="checkbox" disabled="disabled" ng-checked="x.isActive == 1 ? true : false" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿             <md-dialog>
+                 <form ng-cloak>
+                     <md-toolbar>
+                         <div class="md-toolbar-tools">
+                             <h2>Prijava dolaska</h2>
+                             <span flex></span>
+                             <button ng-click="cancel()" class="btn btn-primary">x</button>
+                         </div>
+                     </md-toolbar>
+                     <md-dialog-content>
+                         <div class="md-dialog-content">
+                             <div ng-cloak ng-controller="AppCtrl as ctrl">
+                                 <md-content class="md-padding">
+                                     <form ng-submit="$event.preventDefault()">
+                                         <div layout-gt-sm="row">
+                                             <md-autocomplete ng-disabled="ctrl.isDisabled"
+                                                              md-no-cache="ctrl.noCache"
+                                                              md-selected-item="ctrl.selectedItem"
+                                                              md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                                                              md-search-text="ctrl.searchText"
+                                                              md-selected-item-change="ctrl.selectedItemChange(item)"
+                                                              md-items="item in ctrl.querySearch(ctrl.searchText)"
+                                                              md-item-text="item.display"
+                                                              md-min-length="0"
+                                                              placeholder="Pretraži">
+                                                 <md-item-template>
+                                                     <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                                                 </md-item-template>
+                                                 <md-not-found>
+                                                     No states matching "{{ctrl.searchText}}" were found.
+                                                     <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+                                                 </md-not-found>
+                                             </md-autocomplete>
+                                             <md-button class="md-raised md-primary" ng-click="checkIn(ctrl.selectedItem.value)">Prijavi</md-button>
+                                         </div>
+                                     </form>
+                                     <div style="height: 240px; overflow-y: scroll;">
+                                         <p>Trenutno članova <span class="badge">{{currentNumberOfClients}}</span></p>
+                                         <table class="table">
+                                             <thead class="bg-info">
+                                                 <tr>
+                                                     <td>Id</td>
+                                                     <td>Ime i prezime</td>
+                                                     <td>Datum</td>
+                                                     <td>Vrijeme</td>
+                                                 </tr>
+                                             </thead>
+                                             <tbody>
+                                             <tr ng-repeat="x in currentClients" ng-click="showClient(x)">
+                                                 <td>{{x.id}}</td>
+                                                 <td>{{x.firstName}} {{x.lastName}}</td>
+                                                 <td>{{x.checkInDate}}</td>
+                                                 <td>{{x.checkInTime}}</td>
+                                             </tr>
+                                             </tbody>
+                                         </table>
+                                     </div>
+                                 </md-content>
+                             </div>
+                         </div>
+                     </md-dialog-content>
+                     <md-dialog-actions layout="row">
+                         <md-button ng-click="answer('useful')">
+                             Zatvori
+                         </md-button>
+                     </md-dialog-actions>
+                 </form>
+             </md-dialog>

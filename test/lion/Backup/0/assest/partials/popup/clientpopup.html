@@ -1,0 +1,109 @@
+﻿<div class="col-sm-8">
+    <md-dialog>
+        <form ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>{{client.firstName}} {{client.lastName}}</h2>
+                    <span flex></span>
+                    <button ng-click="cancel()" class="btn btn-primary">x</button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <button class="btn btn-success" ng-click="answer('useful')">Obnovi članarinu</button>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        Podaci o korisniku
+                        <hr />
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Id</label>
+                        <input ng-model="client.id" type="text" disabled>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Ime</label>
+                        <input ng-model="client.firstName" type="text">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Prezime</label>
+                        <input ng-model="client.lastName">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Datum rođenja</label>
+                        <md-datepicker ng-model="client.birthDate"></md-datepicker>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Telefon</label>
+                        <input ng-model="client.phone">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Email</label>
+                        <input name="email" ng-model="client.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                    </md-input-container>
+
+                    <hr />
+                    <p>Tip članarine: <span class="radioValue">{{client.tip}}</span> </p>
+                    <md-radio-group ng-model="client.tip">
+                        <md-radio-button value="Tip 1" class="md-primary">Tip 1</md-radio-button>
+                        <md-radio-button value="Tip 2" class="md-primary">Tip 2</md-radio-button>
+                        <md-radio-button value="Tip 3" class="md-primary">Tip 3</md-radio-button>
+                    </md-radio-group>
+                    <div layout-gt-sm="row">
+                        <p>Trajanje članarine:</p>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Od</label>
+                            <md-datepicker ng-model="client.dateFrom"></md-datepicker>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Do</label>
+                            <md-datepicker ng-model="client.dateTo"></md-datepicker>
+                        </md-input-container>
+                    </div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Iznos članarine</label>
+                        <input name="email" ng-model="client.price" />
+                    </md-input-container>
+                    <hr />
+
+
+
+
+                    <p>Broj dolazaka</p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><label>Br.</label></th>
+                                <th>Vrijeme dolaska</th>
+                                <th>Broj dolazaka</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>16:00</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>17:00</td>
+                                <td>16</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>18:30</td>
+                                <td>22</td>
+                            </tr>
+                            <tr class="info">
+                                <td></td>
+                                <td></td>
+                                <td>43</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <md-button ng-click="save(client)">Spremi</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</div>

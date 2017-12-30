@@ -1,0 +1,77 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="bg-info dashboardBox">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><i class="fa fa-user" aria-hidden="true"></i> TRENUTNO ČLANOVA</td>
+                            <td ng-click="showCheckIn()"><a href></a><span class="badge">{{currentNumberOfClients}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-success btn-sm"  ng-click="showCheckIn()">PRIJAVI DOLAZAK</button>
+                <button class="btn btn-warning btn-sm" ng-click="showClient(client)">NOVI ČLAN</button>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="bg-info dashboardBox">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><i class="fa fa-users" aria-hidden="true"></i></td>
+                            <td>Stalni članovi</td>
+                            <td><span class="badge">55</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-user-plus" aria-hidden="true"></i></td>
+                            <td>Novi članovi</td>
+                            <td><span class="badge">7</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-user-o" aria-hidden="true"></i></td>
+                            <td>Gosti</td>
+                            <td><span class="badge">5</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="bg-info dashboardBox">
+                <!--<p><span class="fa fa-exclamation"></span> ISTEK ČLANARINE <span class="badge">2</span></p>-->
+                <div style="height: 120px; overflow-y: scroll;">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td>ČLANOVI</td>
+                                <td>Istek članarine <span class="badge">2</span></td>
+                            </tr>
+                            <tr ng-class="getDateDiff(x.dateTo) < 5 ? 'text-danger' : ''" ng-repeat="x in clients" ng-click="showClient(x)">
+                                <td><i ng-class="getDateDiff(x.dateTo) < 5 ? 'fa fa-exclamation' : 'fa fa-check'" aria-hidden="true"></i></td>
+                                <td>{{x.firstName}} {{x.lastName}}</td>
+                                <td>{{x.dateTo}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 panel-primary">
+            <div class="panel-heading">
+                Pregled dolazaka
+            </div>
+            <div class="panel-body">
+                <div ng-controller="BarCtrl">
+                    <canvas id="line" class="chart chart-line" chart-data="data" chart-colors="colors" height="250"
+                            chart-labels="labels" chart-series="series" chart-options="options"
+                            chart-dataset-override="datasetOverride" chart-click="onClick">
+                    </canvas>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>

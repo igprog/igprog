@@ -1,0 +1,83 @@
+﻿<div class="container" ng-cloak>
+    <md-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Novi član">
+                <md-content class="md-padding">
+                    <form name="projectForm">
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Ime</label>
+                                <input ng-model="client.firstName" type="text">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Prezime</label>
+                                <input ng-model="client.lastName">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Datum rođenja</label>
+                                <md-datepicker ng-model="client.birthDate"></md-datepicker>
+                            </md-input-container>
+                        </div>
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Telefon</label>
+                                <input ng-model="client.phone">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Email</label>
+                                <input name="email" ng-model="client.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                            </md-input-container>
+                        </div>
+                        <hr />
+                        <p>Tip članarine: <span class="radioValue">{{client.tip}}</span> </p>
+                        <md-radio-group ng-model="client.tip">
+                            <md-radio-button value="Tip 1" class="md-primary">Tip 1</md-radio-button>
+                            <md-radio-button value="Tip 2" class="md-primary">Tip 2</md-radio-button>
+                            <md-radio-button value="Tip 3" class="md-primary">Tip 2</md-radio-button>
+                        </md-radio-group>
+                        <div layout-gt-sm="row">
+                            <p>Trajanje članarine:</p>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Od</label>
+                                <md-datepicker ng-model="client.dateFrom"></md-datepicker>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Do</label>
+                                <md-datepicker ng-model="client.dateTo"></md-datepicker>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Iznos članarine</label>
+                                <input name="email" ng-model="client.price" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                            </md-input-container>
+                        </div>
+                        <hr />
+                    </form>
+                </md-content>
+            </md-tab>
+            <md-tab label="Svi članovi">
+                <md-content class="md-padding">
+                    <div class="container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><label>ID</label></th>
+                                    <th>Ime i prezime</th>
+                                    <td>Istek Članarine</td>
+                                    <th>Aktivan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-class="getDateDiff(x.dateTo) < 5 ? 'text-danger' : ''" ng-repeat="x in clients" ng-click="showClient(x)">
+                                    <td>{{x.id}}</td>
+                                    <td>{{x.firstName}} {{x.lastName}}</td>
+                                    <td>{{x.dateTo}}</td>
+                                    <td><input type="checkbox" disabled="disabled" ng-checked="x.isActive == 1 ? true : false" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>

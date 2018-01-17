@@ -92,7 +92,7 @@ namespace IGPROG
 
 
             _MyEmail = "igprog@yahoo.com";
-            _MyPassword = "Jardula26";
+            _MyPassword = "A...k";
             _MyServerPort = 587;
             _MyServerHost = "smtp.mail.yahoo.com";
 
